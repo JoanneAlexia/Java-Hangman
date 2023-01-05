@@ -32,12 +32,15 @@ public class HangmanWord {
 	
 	/*Function checks if letter argument is in the selected word. If it is it changes the displayed
 	word so that the correctly chosen letter appears*/
-	public void checkLetter(char letter) {
+	public boolean checkLetter(char letter) {
+		boolean letterInWord = false; 
 		for(int i=0; i<this.selectedWord.length(); i++) {
 			if(selectedWord.charAt(i)==letter) {
 				displayWord.set(i,letter);
+				letterInWord = true;
 			}
 		}
+		return letterInWord; 
 	}
 
 }
