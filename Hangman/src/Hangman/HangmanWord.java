@@ -5,14 +5,18 @@ import java.util.ArrayList;
 public class HangmanWord {
 	private String selectedWord = null;
 	//displayWord: An array list of the selected word as displayed to player.Underscores represent the unidentified letters. Identified letters will appear in array. 
-	private ArrayList<Character> displayWord= new ArrayList<Character>();   
+	private ArrayList<Character> displayWord= new ArrayList<Character>();
+	private int numberIdentifiedLetters; 
+	private boolean allLettersIdentified;
 	
 	public HangmanWord(String word) {
 		this.selectedWord = word; 
 		this.displayWord = initialiseDisplayWord(word);
+		this.numberIdentifiedLetters = 0; 
+		this.allLettersIdentified = false;
 	}
 	
-	//Upon instansiation an array list of underscores the length of the selected word is created.  
+	//Upon instantiation an array list of underscores, the length of the selected word, is created.  
 	private ArrayList<Character> initialiseDisplayWord(String word){
 		ArrayList<Character> displayWord = new ArrayList<Character>();
 		for(int i=0;i<word.length();i++) {
@@ -22,12 +26,12 @@ public class HangmanWord {
 	}
 	
 	/*Prints to console the progress of the guessed word */
-	public String printDisplayWord(){
+	public void printDisplayWord(){
 		String displayString = "";
 		for(int i=0;i<this.displayWord.size() ;i++) {
 			displayString += this.displayWord.get(i).toString()+" ";
 		}
-		return displayString;
+		System.out.println("\n"+displayString+"\n");
 	}
 	
 	/*Function checks if letter argument is in the selected word. If it is it changes the displayed
@@ -35,12 +39,23 @@ public class HangmanWord {
 	public boolean checkLetter(char letter) {
 		boolean letterInWord = false; 
 		for(int i=0; i<this.selectedWord.length(); i++) {
+			
 			if(selectedWord.charAt(i)==letter) {
 				displayWord.set(i,letter);
 				letterInWord = true;
+				this.numberIdentifiedLetters++; 
 			}
 		}
+		
+		if(this.numberIdentifiedLetters==this.selectedWord.length()) {
+			this.allLettersIdentified = true;
+			
+		}
 		return letterInWord; 
+	}
+	
+	public boolean getAllLettersIdentified() {
+		return this.allLettersIdentified;
 	}
 
 }
