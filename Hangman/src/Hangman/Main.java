@@ -8,7 +8,7 @@ public class Main {
 		//Select random word using random word selector class
 		
 		//Initialization
-		HangmanWord word = new HangmanWord("hello");
+		HangmanWord word = new HangmanWord(RandomWordSelector.generateRandomWord());
 		drawHangman hangman = new drawHangman();
 		Scanner keyboard = new Scanner(System.in);
 		
@@ -37,6 +37,9 @@ public class Main {
 			}else {
 				System.out.printf("Bad Luck! %s is not in the selected word.%n",input1);
 				hangman.displayHangman();
+				if(hangman.getLostGame()) {
+					System.out.printf("%nThe selected word was %s%n",word.getSelectedWord());
+				}
 			}
 	
 		}

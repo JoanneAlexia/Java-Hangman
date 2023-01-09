@@ -40,10 +40,10 @@ public class HangmanWord {
 		boolean letterInWord = false; 
 		for(int i=0; i<this.selectedWord.length(); i++) {
 			
-			if(selectedWord.charAt(i)==letter) {
+			if(selectedWord.charAt(i)==letter && !displayWord.contains(letter)) {
 				displayWord.set(i,letter);
 				letterInWord = true;
-				this.numberIdentifiedLetters++; 
+				this.numberIdentifiedLetters+=1; 
 			}
 		}
 		
@@ -56,6 +56,10 @@ public class HangmanWord {
 	
 	public boolean getAllLettersIdentified() {
 		return this.allLettersIdentified;
+	}
+	
+	public String getSelectedWord() {
+		return this.selectedWord;
 	}
 
 }
