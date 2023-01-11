@@ -24,6 +24,8 @@ public class RandomWordSelector {
 			wordList.add(inputStream.nextLine().replaceAll("[^a-zA-Z]", ""));
 		}
 		
+		inputStream.close();
+		
 		//Select random word from list
 		Random rand = new Random();
 		return wordList.get(rand.nextInt(wordList.size()-1));

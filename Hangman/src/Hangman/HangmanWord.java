@@ -54,6 +54,18 @@ public class HangmanWord {
 		return letterInWord; 
 	}
 	
+	public boolean checkWord(String word) {
+		boolean wordCorrect = false;
+		if(word.equals(this.selectedWord)){
+			this.allLettersIdentified = true;
+			for(int i=0; i< displayWord.size(); i++) {
+				displayWord.set(i, word.charAt(i));
+			}
+			wordCorrect = true;
+		}
+		return wordCorrect;
+	}
+	
 	public boolean getAllLettersIdentified() {
 		return this.allLettersIdentified;
 	}
